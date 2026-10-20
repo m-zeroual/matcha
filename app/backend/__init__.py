@@ -6,6 +6,8 @@ from backend.routes.likes import likes_bp
 from backend.routes.matches import matches_bp
 from backend.routes.login import login_bp
 from backend.routes.signUp import signUp_bp
+from backend.routes.auth import auth_bp
+
 
 
 
@@ -32,5 +34,6 @@ def create_app():
     app.register_blueprint(matches_bp)
     app.register_blueprint(login_bp)
     app.register_blueprint(signUp_bp)
+    app.register_blueprint(auth_bp)
 
     return app
