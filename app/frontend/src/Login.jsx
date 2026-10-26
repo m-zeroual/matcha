@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import "./Login.css";
 
+import userIdx from "./App"
+
+import App from "./App";
 const STORAGE_KEY = "rememberedUsers";
 
 async function getUsers() {
@@ -14,7 +17,7 @@ async function getUsers() {
   return response.json();
 }
 
-async function userAuth(username, password) {
+async function userAuth(user_id, username, password) {
   
   const url = "/api/login/"
 
@@ -25,7 +28,7 @@ async function userAuth(username, password) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({username: username, password: password})
+        body: JSON.stringify({id: user_id, username: username, password: password})
     });
 
   console.log("response :", response)
@@ -155,8 +158,9 @@ const Login = ({ onSignUp, onLogin }) => {
 
     try {
       if (!onLogin) {
+        var user_id = "user_" + userIdx
         console.log({ username, password });
-        userAuth(username, password)
+        userAuth(user_id, username, password)
         setError("Login handler is not configured.");
         return;
       }

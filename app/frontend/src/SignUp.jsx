@@ -14,7 +14,7 @@ const SignUp = ({ onLogin }) => {
 
     const user = Object.fromEntries(formData.entries());
 
-    console.log("Form data:", user);
+    // console.log("Form data:", user);
 
     fetch("/api/sign_up", {
       method: "POST",
@@ -25,7 +25,7 @@ const SignUp = ({ onLogin }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to fetch login");
+          throw new Error("Failed to signUp user");
         }
         return res.json();
       })
@@ -33,11 +33,11 @@ const SignUp = ({ onLogin }) => {
         set_signUp(res);
       })
       .catch((error) => {
-        console.error("Error fetching login:", error);
+        console.error("Error: ", error);
       });
-
-
   };
+
+
 
   return (
     <div>

@@ -3,6 +3,7 @@ import './App.css';
 import Login from "./Login";
 import SignUp from "./SignUp";
 
+var userIdx = 0;
 
 function App() {
   const [page, setPage] = useState("login");
